@@ -71,7 +71,7 @@ public class UserAccountServiceImpl implements UserAccountService{
     @Override
     public RolesDto changeRolesList(String login, String role, boolean isAddRole) {
         UserAccount userAccount = userAccountRepository.getUserAccountByLoginExistsOrLoginNull(login).orElseThrow(PostNotFoundException::new);
-//если роль непустая строка
+//если роль непустая строка и получили запрос удалить
         if(role != null && isAddRole) {
             userAccount.addRole(role);
                     }
