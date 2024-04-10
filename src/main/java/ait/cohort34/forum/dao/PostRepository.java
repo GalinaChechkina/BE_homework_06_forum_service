@@ -1,8 +1,6 @@
 package ait.cohort34.forum.dao;
 
-import ait.cohort34.forum.dto.DatePeriodDto;
 import ait.cohort34.forum.model.Post;
-import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import java.time.LocalDate;
