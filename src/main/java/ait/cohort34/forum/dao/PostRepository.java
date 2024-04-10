@@ -13,6 +13,7 @@ import java.util.stream.Stream;
 public interface PostRepository extends CrudRepository<Post, String> {
     Stream<Post>findByAuthorIgnoreCase(String author);
     Stream<Post>findByTagsInIgnoreCase(Set<String>tags);
-    //@Query("{$and: [ { dateCreated: { $gte: ?0 } }, { dateCreated: { $lte: ?1 } } ] }")
     Stream<Post>findByDateCreatedBetween (LocalDate from, LocalDate to);
+    //@Query("{$and: [ { dateCreated: { $gte: ?0 } }, { dateCreated: { $lte: ?1 } } ] }")
+    //Stream<Post>findByPeriod (DatePeriodDto periodDto);
 }
