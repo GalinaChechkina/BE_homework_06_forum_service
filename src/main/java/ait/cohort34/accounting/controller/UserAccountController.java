@@ -9,9 +9,16 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
-@RequestMapping("/account")
-@RequiredArgsConstructor
+@RestController//каждый метод этого класса по умолчанию возвращает объекты,
+// которые будут автоматически преобразованы в формат JSON и
+// отправлены обратно клиенту в теле HTTP-ответа
+
+@RequestMapping("/account")//позволяет определить URL-адреса и
+// методы HTTP-запросов, которые должен обрабатывать данный метод или класс
+
+@RequiredArgsConstructor//позволяет избежать явного написания конструктора
+// инициализации для всех final полей
+
 public class UserAccountController{
     final UserAccountService userAccountService;
 
@@ -22,8 +29,8 @@ public class UserAccountController{
 
     @PostMapping("/login")
     public UserDto login() {
-        return null;
         //TODO method login in UserAccountController
+        return null;
     }
 
     @GetMapping("/user/{login}")
