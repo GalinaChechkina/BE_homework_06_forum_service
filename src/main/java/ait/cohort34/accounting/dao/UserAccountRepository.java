@@ -7,8 +7,5 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.Optional;
 
 public interface UserAccountRepository extends CrudRepository<UserAccount,String> {
-    Optional<UserAccount> getUserAccountByLoginExistsOrLoginNull(String login);
-
-
 
 }

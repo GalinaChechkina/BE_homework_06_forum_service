@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
+
 @RestController//каждый метод этого класса по умолчанию возвращает объекты,
 // которые будут автоматически преобразованы в формат JSON и
 // отправлены обратно клиенту в теле HTTP-ответа
@@ -28,9 +30,11 @@ public class UserAccountController{
     }
 
     @PostMapping("/login")
-    public UserDto login() {
-        //TODO method login in UserAccountController
-        return null;
+    public UserDto login(Principal principal) {
+//надо достать данные из заголовка, сделать проверки и вернуть найденного по логину пользователя
+//Principal principal - объект, кот. д. появиться после аутентификации
+//TODO method
+        return userAccountService.getUser(principal.getName());
     }
 
     @GetMapping("/user/{login}")
@@ -60,7 +64,8 @@ public class UserAccountController{
 
     @PutMapping("/password")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void changePassword() {
-      //TODO method changePassword in UserAccountController
+//при смене пароля н. передавать заголовок "X-Password"
+    public void changePassword(Principal principal, @RequestHeader("X-Password") String newPassword) {
+      userAccountService.changePassword(principal.getName(), newPassword);
     }
 }
